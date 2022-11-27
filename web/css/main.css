@@ -747,7 +747,34 @@ h2.title:before{
   vertical-align: baseline;
   white-space: nowrap;
 }
+.panel-menu {
+  padding: 15px 20px 20px;
+}
+.catalog li{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.catalog a {
+    color: #696763;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.1;
+    text-decoration: none;
+    text-transform: uppercase;
+}
 
+.category-childs{
+  padding: 15px;
+}
+.category-childs li{
+  padding: 0;
+}
+
+.category-childs a{
+    font-size: 12px;
+    font-weight: 400;
+}
 .panel-body ul{
   padding-left: 20px;
 }
