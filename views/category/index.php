@@ -152,6 +152,8 @@ $this->title = 'Home | E-Shopper';
 						</div>
 						<?php endforeach ?>
 					</div><!--features_items-->
+	                    <?php else:?>
+                         <h2>Здесь товаров пока нет...</h2>
 					<?php endif ?>
 					<div class="category-tab"><!--category-tab-->
 						<div class="col-sm-12">
