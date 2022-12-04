@@ -5,7 +5,6 @@
 use app\components\MenuWidget;
 use yii\helpers\Html;
 
-$this->title = 'Home | E-Shopper';
 ?>
 	<section id="slider"><!--slider-->
 		<div class="container">
