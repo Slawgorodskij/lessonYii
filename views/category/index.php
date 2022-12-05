@@ -4,6 +4,7 @@
 
 use app\components\MenuWidget;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 ?>
 	<section id="slider"><!--slider-->
@@ -130,7 +131,9 @@ use yii\helpers\Html;
 										<div class="product-overlay">
 											<div class="overlay-content">
 												<h2>$ <?= $hit->price ?></h2>
-												<p><?= $hit->name ?></p>
+                                                <a href="<?= Url::to(['product/view', 'id' => $hit->id]) ?>">
+                                                    <?= $hit->name ?>
+                                                </a>
 												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 											</div>
                                             <?php if($hit->new):?>
