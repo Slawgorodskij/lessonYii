@@ -365,7 +365,7 @@ use yii\helpers\Url;
                                                     <a href="<?= Url::to(['product/view', 'id' => $hit->id]) ?>">
                                                         <?= $hit->name ?>
                                                     </a>
-                                                    <button type="button" class="btn btn-default add-to-cart"><i
+                                                    <button type="button" data-id="<?= $hit->id?>" class="btn btn-default add-to-cart"><i
                                                                 class="fa fa-shopping-cart"></i>Add to cart
                                                     </button>
                                                 </div>

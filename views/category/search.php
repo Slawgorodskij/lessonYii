@@ -68,8 +68,10 @@ use yii\widgets\LinkPager;
                                             <?= Html::img("@web/images/shop/{$product->img}", ['alt' => $product->name]) ?>
                                             <h2>$<?= $product->price ?></h2>
                                             <p><?= $product->name ?></p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i
-                                                        class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <p class="btn btn-default add-to-cart">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                Add to cart
+                                            </p>
                                         </div>
                                         <div class="product-overlay">
                                             <div class="overlay-content">
@@ -77,8 +79,11 @@ use yii\widgets\LinkPager;
                                                 <a href="<?= Url::to(['product/view', 'id' => $product->id]) ?>">
                                                     <?= $product->name ?>
                                                 </a>
-                                                <a href="#" class="btn btn-default add-to-cart">
-                                                    <i class="fa fa-shopping-cart"></i> Add to cart
+                                                <a href="<?= Url::to(['cart/add', 'id' => $product->id]) ?>"
+                                                   data-id="<?= $product->id?>"
+                                                   class="btn btn-default add-to-cart">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    Add to cart
                                                 </a>
                                             </div>
                                         </div>

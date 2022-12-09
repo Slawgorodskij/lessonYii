@@ -126,7 +126,7 @@ use yii\helpers\Url;
                                             <?= Html::img("@web/images/products/{$hit->img}", ['alt' => $hit->name]) ?>
 											<h2>$ <?= $hit->price ?></h2>
 											<p><?= $hit->name ?></p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<p class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</p>
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
@@ -134,7 +134,12 @@ use yii\helpers\Url;
                                                 <a href="<?= Url::to(['product/view', 'id' => $hit->id]) ?>">
                                                     <?= $hit->name ?>
                                                 </a>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<a href="<?= Url::to(['cart/add', 'id' => $hit->id]) ?>"
+                                                   data-id="<?= $hit->id?>"
+                                                   class="btn btn-default add-to-cart">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    Add to cart
+                                                </a>
 											</div>
                                             <?php if($hit->new):?>
                                                 <?= Html::img("@web/images/home/new.png", ['alt' => 'новинка', 'class' => "new"]) ?>
