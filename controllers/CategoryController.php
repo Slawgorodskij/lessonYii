@@ -29,8 +29,8 @@ class CategoryController extends AppController
     {
         $category = Category::findOne($id);
 
-        if(empty($category)){
-            throw new HttpException(404 ,'Такого категории нет');
+        if (empty($category)) {
+            throw new HttpException(404, 'Такого категории нет');
         }
 
         $query = Product::find()->where(['category_id' => $id]);
@@ -39,7 +39,7 @@ class CategoryController extends AppController
             'pageSize' => 3,
             'forcePageParam' => false,
             'pageSizeParam' => false,
-            ]);
+        ]);
         $products = $query
             ->offset($pages->offset)
             ->limit($pages->limit)
@@ -51,5 +51,34 @@ class CategoryController extends AppController
             'pages' => $pages,
             'category' => $category,
         ]);
+    }
+
+    public function actionSearch()
+    {
+        $q = trim(Yii::$app->request->get('q'));
+
+        $this->setMeta('E-Shopper | поиск:  ' . $q);
+        if(!$q){
+            return $this->render('search', [
+                'q' => 'пустая строка',
+            ]);
+        }
+        $query = Product::find()->where(['like', 'name', $q]);
+        $pages = new Pagination([
+            'totalCount' => $query->count(),
+            'pageSize' => 3,
+            'forcePageParam' => false,
+            'pageSizeParam' => false,
+        ]);
+        $products = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        return $this->render('search', [
+            'products' => $products,
+            'pages' => $pages,
+            'q' => $q,
+        ]);
+
     }
 }
