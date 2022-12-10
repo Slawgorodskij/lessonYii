@@ -26,4 +26,19 @@ class CartController extends AppController
             'session' => $session,
         ]);
     }
+
+    public function actionClear()
+    {
+        $session = Yii::$app->session;
+        $session->open();
+        $session->remove('cart.qty');
+        $session->remove('cart.sum');
+        $session->remove('cart');
+
+        $this->layout = false;
+
+        return $this->render('cart-modal', [
+            'session' => $session,
+        ]);
+    }
 }

@@ -4,11 +4,14 @@
 /** @var string $content */
 
 use app\assets\AppAsset;
+use yii\helpers\Url;
 use app\widgets\Alert;
-use yii\bootstrap5\Breadcrumbs;
-use yii\bootstrap5\Html;
-use yii\bootstrap5\Nav;
-use yii\bootstrap5\NavBar;
+use yii\bootstrap\Breadcrumbs;
+use yii\bootstrap\Html;
+use yii\bootstrap\Modal;
+use yii\bootstrap\Nav;
+use yii\bootstrap\NavBar;
+
 
 AppAsset::register($this);
 
@@ -62,7 +65,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="<?= \yii\helpers\Url::home() ?>">
+                            <a href="<?= Url::home() ?>">
                                 <?= Html::img("@web/images/home/logo.png", ["alt" => "логотип"]) ?>
                             </a>
                         </div>
@@ -146,7 +149,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                         <div class="search_box pull-right">
                             <form
                                     method="get"
-                                    action="<?= \yii\helpers\Url::to(['category/search']) ?>">
+                                    action="<?= Url::to(['category/search']) ?>">
                                 <input type="text" placeholder="Search" name="q"/>
                             </form>
 
@@ -318,6 +321,18 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         </div>
 
     </footer><!--/Footer-->
+
+    <?php
+    Modal::begin([
+        'header' => '<h2>Корзина</h2>',
+        'id' => 'cart',
+        'size'=> 'modal-lg',
+        'footer' => '<button type="button" class="btn btn-default" data-bs-dismiss="modal">Закрыть</button>
+    <button type="button" class="btn btn-success">Оформить заказ</button>
+    <button type="button" class="btn btn-danger" onclick="clearCart()">Очистить корзину</button>',
+    ]);
+    Modal::end();
+    ?>
     <?php $this->endBody() ?>
     </body>
     </html>
