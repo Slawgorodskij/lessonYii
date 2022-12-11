@@ -105,8 +105,11 @@ use yii\helpers\Url;
                             <span>
 									<span>US $ <?= $product->price ?></span>
 									<label>Quantity:</label>
-									<input type="text" value="3"/>
-									<button type="button" class="btn btn-fefault cart">
+									<input type="text" value="1" id="qty"/>
+									<button type="button"
+                                            class="btn btn-fefault cart add-to-cart"
+                                            data-id="<?= $product->id?>"
+                                    >
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
 									</button>
@@ -365,8 +368,11 @@ use yii\helpers\Url;
                                                     <a href="<?= Url::to(['product/view', 'id' => $hit->id]) ?>">
                                                         <?= $hit->name ?>
                                                     </a>
-                                                    <button type="button" data-id="<?= $hit->id?>" class="btn btn-default add-to-cart"><i
-                                                                class="fa fa-shopping-cart"></i>Add to cart
+                                                    <button type="button"
+                                                            data-id="<?= $hit->id ?>"
+                                                            class="btn btn-default add-to-cart">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                        Add to cart
                                                     </button>
                                                 </div>
                                             </div>

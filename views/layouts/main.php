@@ -101,7 +101,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                                 <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                <li><a href="<?= Url::to(['cart/view']) ?>"><i class="fa fa-shopping-cart"></i> Cart</a>
+                                </li>
                                 <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
                             </ul>
                         </div>
@@ -326,9 +327,9 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     Modal::begin([
         'header' => '<h2>Корзина</h2>',
         'id' => 'cart',
-        'size'=> 'modal-lg',
+        'size' => 'modal-lg',
         'footer' => '<button type="button" class="btn btn-default" data-bs-dismiss="modal">Закрыть</button>
-    <button type="button" class="btn btn-success">Оформить заказ</button>
+    <a  href="' . Url::to(['cart/view']) . '" class="btn btn-success">Оформить заказ</a>
     <button type="button" class="btn btn-danger" onclick="clearCart()">Очистить корзину</button>',
     ]);
     Modal::end();

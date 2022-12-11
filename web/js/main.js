@@ -27,7 +27,8 @@ function clearCart() {
 
 $('#cart .modal-body').on('click', '.cart_quantity_delete', function (event) {
     event.preventDefault();
-    let id = $(this).data('id')
+    let id = $(this).data('id');
+
     $.ajax({
         url: '/cart/delete-item',
         data: {id: id},
@@ -46,9 +47,11 @@ $('#cart .modal-body').on('click', '.cart_quantity_delete', function (event) {
 $('.add-to-cart').on('click', function (event) {
     event.preventDefault();
     let id = $(this).data('id')
+    let qty = $('#qty').val();
+
     $.ajax({
         url: '/cart/add',
-        data: {id: id},
+        data: {id: id, qty: qty},
         type: "GET",
         success: function (res){
             //console.log(res)

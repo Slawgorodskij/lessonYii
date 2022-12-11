@@ -8,9 +8,20 @@ use Yii;
 
 class CartController extends AppController
 {
+    public function actionView()
+    {
+        $session = Yii::$app->session;
+        $session->open();
+        return $this->render('view', [
+            'session' => $session,
+        ]);
+    }
+
     public function actionAdd()
     {
         $id = Yii::$app->request->get('id');
+        $qty = Yii::$app->request->get('qty') ?
+            (int)Yii::$app->request->get('qty') : 1;
         $product = Product::findOne($id);
         if (empty($product)) return false;
 
@@ -18,7 +29,7 @@ class CartController extends AppController
         $session->open();
 
         $cart = new Cart();
-        $cart->addToCart($product);
+        $cart->addToCart($product, $qty);
 
         $this->layout = false;
 
