@@ -41,4 +41,22 @@ class CartController extends AppController
             'session' => $session,
         ]);
     }
+
+    public function actionDeleteItem()
+    {
+        $id = Yii::$app->request->get('id');
+
+        $session = Yii::$app->session;
+        $session->open();
+
+        $cart = new Cart();
+        $cart->recalc($id);
+
+        $this->layout = false;
+
+        return $this->render('cart-modal', [
+            'session' => $session,
+        ]);
+    }
+
 }

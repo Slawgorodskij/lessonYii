@@ -25,6 +25,24 @@ function clearCart() {
     })
 }
 
+$('#cart .modal-body').on('click', '.cart_quantity_delete', function (event) {
+    event.preventDefault();
+    let id = $(this).data('id')
+    $.ajax({
+        url: '/cart/delete-item',
+        data: {id: id},
+        type: "GET",
+        success: function (res){
+         //   if(!res) alert('Произошла ошибка...')
+            console.log(res)
+            showCart(res);
+        },
+        error: function (){
+            alert('Произошла ошибка...')
+        }
+    })
+})
+
 $('.add-to-cart').on('click', function (event) {
     event.preventDefault();
     let id = $(this).data('id')

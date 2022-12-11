@@ -48,7 +48,12 @@
                                 <p class="cart_total_price">$<?= $product['price'] * $product['qty'] ?></p>
                             </td>
                             <td class="cart_delete">
-                                <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                                <button type="button"
+                                        class="cart_quantity_delete"
+                                        data-id="<?= $id?>"
+                                >
+                                    <i class="fa fa-times"></i>
+                                </button>
                             </td>
                         </tr>
 
