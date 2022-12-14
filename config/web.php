@@ -2,6 +2,7 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$secret = require_once __DIR__ . '/secret.php';
 
 $config = [
     'id' => 'basic',
@@ -31,7 +32,15 @@ $config = [
         ],
         'mailer' => [
             'class' => \yii\symfonymailer\Mailer::class,
-            'viewPath' => '@app/mail',
+            'transport' => [
+                'scheme' => 'smtp',
+                'host' => 'smtp.mail.ru',
+                'username' => 'MAIL_USER',
+                'password' => 'MAIL_PASSWORD',
+                'port' => 465,
+                'encryption' => 'tls',
+            ],
+           // 'viewPath' => '@common/mail',
             // send all mails to a file by default.
             'useFileTransport' => true,
         ],

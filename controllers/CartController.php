@@ -25,6 +25,12 @@ class CartController extends AppController
             if ($order->save()) {
                 $this->saveOrderItems($session['cart'], $order->id);
                 Yii::$app->session->setFlash('success', 'Ваш заказ принят. Менеджер вскоре свяжется с Вами');
+                Yii::$app->mailer->compose('order', ['session' => $session])
+                    ->setFrom('slawgorodskij@mail.ru')
+                    ->setTo($order->email)
+                    ->setSubject('Заказ')
+                    ->send();
+
                 $session->remove('cart.qty');
                 $session->remove('cart.sum');
                 $session->remove('cart');
@@ -95,7 +101,7 @@ class CartController extends AppController
 
     protected function saveOrderItems($items, $order_id)
     {
-        foreach ($items as $id=>$item){
+        foreach ($items as $id => $item) {
             $order_items = new OrderItems();
             $order_items->order_id = $order_id;
             $order_items->product_id = $id;
