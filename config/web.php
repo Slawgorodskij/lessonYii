@@ -12,7 +12,13 @@ $config = [
     'defaultRoute' => 'category/index',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
+    ],
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+            'layout' => 'admin',
+        ],
     ],
     'components' => [
         'request' => [
@@ -40,9 +46,9 @@ $config = [
                 'port' => 465,
                 'encryption' => 'tls',
             ],
-           // 'viewPath' => '@common/mail',
+            // 'viewPath' => '@common/mail',
             // send all mails to a file by default.
-            'useFileTransport' => true,
+            'useFileTransport' => false,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,

@@ -103,7 +103,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                                 <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                 <li><a href="<?= Url::to(['cart/view']) ?>"><i class="fa fa-shopping-cart"></i> Cart</a>
                                 </li>
-                                <li><a href="<?=Url::to(['/admin'])?>"><i class="fa fa-lock"></i> Login</a></li>
+                                <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
                             </ul>
                         </div>
                     </div>
@@ -126,14 +126,14 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                         </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="<?=Url::home()?>" class="active">Home</a></li>
+                                <li><a href="index.html" class="active">Home</a></li>
                                 <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
                                         <li><a href="product-details.html">Product Details</a></li>
                                         <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="<?=Url::to(['cart/view'])?>">Cart</a></li>
-                                        <li><a href="<?=Url::to(['/admin'])?>">Login</a></li>
+                                        <li><a href="cart.html">Cart</a></li>
+                                        <li><a href="login.html">Login</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
@@ -149,8 +149,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                     <div class="col-sm-3">
                         <div class="search_box pull-right">
                             <form
-                                    method="get"
-                                    action="<?= Url::to(['category/search']) ?>">
+                                method="get"
+                                action="<?= Url::to(['category/search']) ?>">
                                 <input type="text" placeholder="Search" name="q"/>
                             </form>
 
@@ -323,17 +323,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 
     </footer><!--/Footer-->
 
-    <?php
-    Modal::begin([
-        'header' => '<h2>Корзина</h2>',
-        'id' => 'cart',
-        'size' => 'modal-lg',
-        'footer' => '<button type="button" class="btn btn-default" data-bs-dismiss="modal">Закрыть</button>
-    <a  href="' . Url::to(['cart/view']) . '" class="btn btn-success">Оформить заказ</a>
-    <button type="button" class="btn btn-danger" onclick="clearCart()">Очистить корзину</button>',
-    ]);
-    Modal::end();
-    ?>
     <?php $this->endBody() ?>
     </body>
     </html>
