@@ -132,8 +132,22 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                                         <li><a href="shop.html">Products</a></li>
                                         <li><a href="product-details.html">Product Details</a></li>
                                         <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="cart.html">Cart</a></li>
-                                        <li><a href="login.html">Login</a></li>
+
+                                        <?php if (Yii::$app->user->isGuest): ?>
+                                            <li>
+                                                <a href="<?= Url::to(['site/login']) ?>">
+                                                    <i class="fa fa-lock"></i>
+                                                    Вход
+                                                </a>
+                                            </li>
+                                        <?php else: ?>
+                                            <li>
+                                                <a href="<?= Url::to(['/site/logout']) ?>">
+                                                    <i class="fa fa-lock"></i>
+                                                    Выход
+                                                </a>
+                                            </li>
+                                        <?php endif; ?>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>

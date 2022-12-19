@@ -103,7 +103,21 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                                 <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                 <li><a href="<?= Url::to(['cart/view']) ?>"><i class="fa fa-shopping-cart"></i> Cart</a>
                                 </li>
-                                <li><a href="<?=Url::to(['/admin'])?>"><i class="fa fa-lock"></i> Login</a></li>
+                                <?php if (Yii::$app->user->isGuest): ?>
+                                    <li>
+                                        <a href="<?= Url::to(['site/login']) ?>">
+                                            <i class="fa fa-lock"></i>
+                                            Вход
+                                        </a>
+                                    </li>
+                                <?php else: ?>
+                                    <li>
+                                        <a href="<?= Url::to(['/site/logout']) ?>">
+                                            <i class="fa fa-lock"></i>
+                                            Выход
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
                             </ul>
                         </div>
                     </div>
@@ -126,14 +140,14 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                         </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="<?=Url::home()?>" class="active">Home</a></li>
+                                <li><a href="<?= Url::home() ?>" class="active">Home</a></li>
                                 <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
                                         <li><a href="product-details.html">Product Details</a></li>
                                         <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="<?=Url::to(['cart/view'])?>">Cart</a></li>
-                                        <li><a href="<?=Url::to(['/admin'])?>">Login</a></li>
+                                        <li><a href="<?= Url::to(['cart/view']) ?>">Cart</a></li>
+                                        <li><a href="<?= Url::to(['/admin']) ?>">Login</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
