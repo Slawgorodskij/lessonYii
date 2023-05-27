@@ -174,6 +174,18 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         </div><!--/header-bottom-->
     </header><!--/header-->
     <div class="container">
+        <?php if (Yii::$app->session->hasFlash('success')): ?>
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button"
+                        class="close"
+                        data-dismiss="alert"
+                        aria-label="close"
+                >
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <?= Yii::$app->session->getFlash('success'); ?>
+            </div>
+        <?php endif; ?>
         <?= $content ?>
     </div>
     <footer id="footer"><!--Footer-->
