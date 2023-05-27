@@ -98,12 +98,27 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+                                <li><a href="<?= Url::to(['/admin']) ?>"><i class="fa fa-user"></i> Account</a></li>
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                 <li><a href="<?= Url::to(['cart/view']) ?>"><i class="fa fa-shopping-cart"></i> Cart</a>
                                 </li>
-                                <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+                                <?php if (Yii::$app->user->isGuest): ?>
+                                    <li>
+                                        <a href="<?= Url::to(['site/login']) ?>">
+                                            <i class="fa fa-lock"></i>
+                                            Вход
+                                        </a>
+                                    </li>
+                                <?php else: ?>
+                                    <li>
+                                        <a href="<?= Url::to(['/site/logout']) ?>">
+                                            <i class="fa fa-lock"></i>
+                                            <?= Yii::$app->user->identity['username'] ?>
+                                            (Выход)
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
                             </ul>
                         </div>
                     </div>
@@ -163,8 +178,8 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                     <div class="col-sm-3">
                         <div class="search_box pull-right">
                             <form
-                                method="get"
-                                action="<?= Url::to(['category/search']) ?>">
+                                    method="get"
+                                    action="<?= Url::to(['category/search']) ?>">
                                 <input type="text" placeholder="Search" name="q"/>
                             </form>
 
@@ -174,9 +189,9 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             </div>
         </div><!--/header-bottom-->
     </header><!--/header-->
-
-    <?= $content ?>
-
+    <div class="container">
+        <?= $content ?>
+    </div>
     <footer id="footer"><!--Footer-->
         <div class="footer-top">
             <div class="container">

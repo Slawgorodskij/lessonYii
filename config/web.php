@@ -2,7 +2,7 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
-$secret = require_once __DIR__ . '/secret.php';
+//$secret = require_once __DIR__ . '/secret.php';
 
 $config = [
     'id' => 'basic',
@@ -18,6 +18,7 @@ $config = [
         'admin' => [
             'class' => 'app\modules\admin\Module',
             'layout' => 'admin',
+            'defaultRoute' => 'order/index'
         ],
     ],
     'components' => [
@@ -32,6 +33,7 @@ $config = [
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
+            //'loginUrl'=>'addressed'
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',

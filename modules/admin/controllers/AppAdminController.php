@@ -7,7 +7,7 @@ use yii\web\Controller;
 
 class AppAdminController extends Controller
 {
-    public function behaviors(): array
+    public function behaviors()
     {
         return [
             'access' => [
