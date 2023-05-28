@@ -50,7 +50,7 @@ use yii\widgets\ActiveForm;
                         <tr>
                             <td class="cart_product">
                                 <a href="<?= Url::to(['product/view', 'id' => $id]) ?>">
-                                    <?= Html::img("@web/images/products/{$product['img']}", ['alt' => $product['name']]) ?>
+                                    <?= Html::img($product['img'], ['alt' => $product['name']]) ?>
                             </td>
                             <td class="cart_description">
                                 <h4>
