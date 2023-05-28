@@ -54,7 +54,7 @@ class Product extends \yii\db\ActiveRecord
             'name' => 'Наименование',
             'content' => 'Описание',
             'price' => 'Цена',
-            'keywords' => 'Ключевые словва',
+            'keywords' => 'Ключевые слова',
             'description' => 'Мета-описания',
             'img' => 'Фото',
             'hit' => 'Хит',
