@@ -24,8 +24,6 @@ use yii\widgets\ActiveForm;
             <option value="0">Самостоятельная категория</option>
             <?= MenuWidget::widget(['tpl' => 'select', 'model' => $model]) ?>
         </select>
-
-        <div class="help-block"></div>
     </div>
 
 
