@@ -19,7 +19,8 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-symfonymailer": "~2.0.3",
         "mihaildev/yii2-ckeditor": "*",
-        "mihaildev/yii2-elfinder": "*"
+        "mihaildev/yii2-elfinder": "*",
+        "costa-rico/yii2-images": "1.0.5"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

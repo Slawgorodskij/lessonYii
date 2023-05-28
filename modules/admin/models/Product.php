@@ -21,6 +21,17 @@ use Yii;
  */
 class Product extends \yii\db\ActiveRecord
 {
+    public $image;
+    public $gallery;
+    public function behaviors()
+    {
+        return [
+            'image' => [
+                'class' => 'rico\yii2images\behaviors\ImageBehave',
+            ]
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -40,6 +51,8 @@ class Product extends \yii\db\ActiveRecord
             [['content', 'hit', 'new', 'sale'], 'string'],
             [['price'], 'number'],
             [['name', 'keywords', 'description', 'img'], 'string', 'max' => 255],
+            [['image'], 'file', 'extensions' => 'png, jpg, webp'],
+            [['gallery'], 'file', 'extensions' => 'png, jpg, webp', 'maxFiles' => 4],
         ];
     }
 
@@ -56,7 +69,7 @@ class Product extends \yii\db\ActiveRecord
             'price' => 'Цена',
             'keywords' => 'Ключевые слова',
             'description' => 'Мета-описания',
-            'img' => 'Фото',
+            'image' => 'Фото',
             'hit' => 'Хит',
             'new' => 'Новинка',
             'sale' => 'Распродажа',
@@ -66,5 +79,15 @@ class Product extends \yii\db\ActiveRecord
     public function getCategory()
     {
         return $this->hasOne(Category::class, ['id' => 'category_id']);
+    }
+
+    public function upload()
+    {
+        if($this->validate()){
+            $this->image->saveAs('upload/store/' . $this->image->baseName . '.' . $this->image->extension);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
